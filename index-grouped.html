@@ -186,123 +186,70 @@
     </div>
   </section>
 
-  <!-- featured rail — GROUPED BY GAME (variant) -->
+  <!-- featured rail — 4 Steam Wallet denominations, varying discounts -->
   <section>
     <div class="flex items-end justify-between mb-7 gap-4 flex-wrap">
-      <div>
-        <h2 class="text-2xl font-bold grot">Sevkaan picks <span class="text-white/40 text-base font-normal">· grouped by game</span></h2>
-        <p class="text-sm text-white/55 mt-1">Same brand, multiple denominations. Pick the amount that fits.</p>
+      <div class="flex items-center gap-4">
+        <div class="gc gc-steam !w-14 !h-14 !aspect-auto !p-2.5 !rounded-xl !shadow-none flex items-center justify-center">
+          <img class="!h-8" src="https://cdn.simpleicons.org/steam/c7d5e0" alt="Steam"/>
+        </div>
+        <div>
+          <h2 class="text-2xl font-bold grot">Sevkaan picks · Steam Wallet</h2>
+          <p class="text-sm text-white/55 mt-1">4 denominations — bigger card, bigger discount.</p>
+        </div>
       </div>
-      <span class="cell rounded-full px-3 py-1.5 text-xs">3 games · 14 denoms</span>
+      <span class="cell rounded-full px-3 py-1.5 text-xs">Save up to <b class="text-emerald-400">25%</b></span>
     </div>
 
-    <!-- Group: Steam / Counter-Strike 2 -->
-    <div class="mb-10">
-      <div class="flex items-center gap-3 mb-4">
-        <div class="gc gc-steam !w-12 !h-12 !aspect-auto !p-2 !rounded-lg !shadow-none flex items-center justify-center">
-          <img class="!h-7" src="https://cdn.simpleicons.org/steam/c7d5e0" alt="Steam"/>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <!-- $10 / -10% -->
+      <div class="gc gc-steam" style="aspect-ratio:auto;min-height:240px">
+        <div class="flex items-start justify-between">
+          <img style="height:28px" src="https://cdn.simpleicons.org/steam/c7d5e0" alt="Steam"/>
+          <span class="disc">-10%</span>
         </div>
-        <div class="flex-1">
-          <h3 class="font-bold text-lg leading-tight">Steam Wallet</h3>
-          <p class="text-xs text-white/55 mt-0.5">Counter-Strike 2 · Dota 2 · "Where chat lives" — Sev</p>
-        </div>
-        <span class="cell rounded-full px-3 py-1.5 text-xs">-20% off all denoms</span>
-      </div>
-      <div class="flex gap-4 overflow-x-auto pb-2">
-        <div class="gc gc-steam shrink-0 w-52" style="aspect-ratio:auto;min-height:200px">
-          <div class="flex items-start justify-between"><img style="height:22px" src="https://cdn.simpleicons.org/steam/c7d5e0" alt="Steam"/><span class="disc">-20%</span></div>
-          <div class="logo-wrap" style="flex:1"><div class="text-5xl font-black mono">$10</div></div>
-          <div><div class="brand" style="font-size:13px">Steam Wallet</div><div class="denoms" style="font-size:11px;opacity:.7">Pay $8.00</div></div>
-        </div>
-        <div class="gc gc-steam shrink-0 w-52" style="aspect-ratio:auto;min-height:200px">
-          <div class="flex items-start justify-between"><img style="height:22px" src="https://cdn.simpleicons.org/steam/c7d5e0" alt="Steam"/><span class="disc">-20%</span></div>
-          <div class="logo-wrap" style="flex:1"><div class="text-5xl font-black mono">$25</div></div>
-          <div><div class="brand" style="font-size:13px">Steam Wallet</div><div class="denoms" style="font-size:11px;opacity:.7">Pay $20.00</div></div>
-        </div>
-        <div class="gc gc-steam shrink-0 w-52 ring-2 ring-white/40" style="aspect-ratio:auto;min-height:200px;position:relative">
-          <div class="absolute -top-2 left-3 bg-white text-black text-[9px] font-black px-2 py-0.5 rounded">★ SEV'S TOP</div>
-          <div class="flex items-start justify-between"><img style="height:22px" src="https://cdn.simpleicons.org/steam/c7d5e0" alt="Steam"/><span class="disc">-20%</span></div>
-          <div class="logo-wrap" style="flex:1"><div class="text-5xl font-black mono">$50</div></div>
-          <div><div class="brand" style="font-size:13px">Steam Wallet</div><div class="denoms" style="font-size:11px;opacity:.7">Pay $40.00</div></div>
-        </div>
-        <div class="gc gc-steam shrink-0 w-52" style="aspect-ratio:auto;min-height:200px">
-          <div class="flex items-start justify-between"><img style="height:22px" src="https://cdn.simpleicons.org/steam/c7d5e0" alt="Steam"/><span class="disc">-20%</span></div>
-          <div class="logo-wrap" style="flex:1"><div class="text-5xl font-black mono">$100</div></div>
-          <div><div class="brand" style="font-size:13px">Steam Wallet</div><div class="denoms" style="font-size:11px;opacity:.7">Pay $80.00</div></div>
+        <div class="logo-wrap" style="flex:1"><div class="text-6xl font-black mono">$10</div></div>
+        <div>
+          <div class="brand" style="font-size:14px">Steam Wallet</div>
+          <div class="denoms" style="font-size:12px;opacity:.85;margin-top:2px"><span class="line-through opacity-50">$10.00</span> · Pay <b>$9.00</b></div>
         </div>
       </div>
-    </div>
-
-    <!-- Group: Riot / Valorant -->
-    <div class="mb-10">
-      <div class="flex items-center gap-3 mb-4">
-        <div class="gc gc-riot !w-12 !h-12 !aspect-auto !p-2 !rounded-lg !shadow-none flex items-center justify-center">
-          <img class="!h-7" src="https://cdn.simpleicons.org/riotgames/ffffff" alt="Riot"/>
+      <!-- $25 / -15% -->
+      <div class="gc gc-steam" style="aspect-ratio:auto;min-height:240px">
+        <div class="flex items-start justify-between">
+          <img style="height:28px" src="https://cdn.simpleicons.org/steam/c7d5e0" alt="Steam"/>
+          <span class="disc">-15%</span>
         </div>
-        <div class="flex-1">
-          <h3 class="font-bold text-lg leading-tight">Riot Games</h3>
-          <p class="text-xs text-white/55 mt-0.5">VALORANT · League of Legends · "VP regret guaranteed" — Sev</p>
-        </div>
-        <span class="cell rounded-full px-3 py-1.5 text-xs">-15% off all denoms</span>
-      </div>
-      <div class="flex gap-4 overflow-x-auto pb-2">
-        <div class="gc gc-riot shrink-0 w-52" style="aspect-ratio:auto;min-height:200px">
-          <div class="flex items-start justify-between"><img style="height:22px" src="https://cdn.simpleicons.org/riotgames/ffffff" alt="Riot"/><span class="disc">-15%</span></div>
-          <div class="logo-wrap" style="flex:1"><div class="text-5xl font-black mono">$10</div></div>
-          <div><div class="brand" style="font-size:13px">Riot Points</div><div class="denoms" style="font-size:11px;opacity:.7">Pay $8.50</div></div>
-        </div>
-        <div class="gc gc-riot shrink-0 w-52 ring-2 ring-white/40" style="aspect-ratio:auto;min-height:200px;position:relative">
-          <div class="absolute -top-2 left-3 bg-white text-black text-[9px] font-black px-2 py-0.5 rounded">★ SEV'S TOP</div>
-          <div class="flex items-start justify-between"><img style="height:22px" src="https://cdn.simpleicons.org/riotgames/ffffff" alt="Riot"/><span class="disc">-15%</span></div>
-          <div class="logo-wrap" style="flex:1"><div class="text-5xl font-black mono">$25</div></div>
-          <div><div class="brand" style="font-size:13px">Riot Points</div><div class="denoms" style="font-size:11px;opacity:.7">Pay $21.25</div></div>
-        </div>
-        <div class="gc gc-riot shrink-0 w-52" style="aspect-ratio:auto;min-height:200px">
-          <div class="flex items-start justify-between"><img style="height:22px" src="https://cdn.simpleicons.org/riotgames/ffffff" alt="Riot"/><span class="disc">-15%</span></div>
-          <div class="logo-wrap" style="flex:1"><div class="text-5xl font-black mono">$50</div></div>
-          <div><div class="brand" style="font-size:13px">Riot Points</div><div class="denoms" style="font-size:11px;opacity:.7">Pay $42.50</div></div>
-        </div>
-        <div class="gc gc-riot shrink-0 w-52" style="aspect-ratio:auto;min-height:200px">
-          <div class="flex items-start justify-between"><img style="height:22px" src="https://cdn.simpleicons.org/riotgames/ffffff" alt="Riot"/><span class="disc">-15%</span></div>
-          <div class="logo-wrap" style="flex:1"><div class="text-5xl font-black mono">$100</div></div>
-          <div><div class="brand" style="font-size:13px">Riot Points</div><div class="denoms" style="font-size:11px;opacity:.7">Pay $85.00</div></div>
+        <div class="logo-wrap" style="flex:1"><div class="text-6xl font-black mono">$25</div></div>
+        <div>
+          <div class="brand" style="font-size:14px">Steam Wallet</div>
+          <div class="denoms" style="font-size:12px;opacity:.85;margin-top:2px"><span class="line-through opacity-50">$25.00</span> · Pay <b>$21.25</b></div>
         </div>
       </div>
-    </div>
-
-    <!-- Group: Fortnite V-Bucks -->
-    <div>
-      <div class="flex items-center gap-3 mb-4">
-        <div class="gc gc-fortnite !w-12 !h-12 !aspect-auto !p-2 !rounded-lg !shadow-none flex items-center justify-center">
-          <img class="!h-7" src="https://cdn.simpleicons.org/fortnite/ffffff" alt="Fortnite"/>
+      <!-- $50 / -20% — SEV'S TOP -->
+      <div class="gc gc-steam ring-2 ring-white/40" style="aspect-ratio:auto;min-height:240px;position:relative">
+        <div class="absolute -top-2.5 left-4 bg-white text-black text-[10px] font-black px-2.5 py-1 rounded">★ SEV'S TOP</div>
+        <div class="flex items-start justify-between">
+          <img style="height:28px" src="https://cdn.simpleicons.org/steam/c7d5e0" alt="Steam"/>
+          <span class="disc">-20%</span>
         </div>
-        <div class="flex-1">
-          <h3 class="font-bold text-lg leading-tight">Fortnite V-Bucks</h3>
-          <p class="text-xs text-white/55 mt-0.5">Battle Royale · "For when chat dares me to buy the bundle"</p>
+        <div class="logo-wrap" style="flex:1"><div class="text-6xl font-black mono">$50</div></div>
+        <div>
+          <div class="brand" style="font-size:14px">Steam Wallet</div>
+          <div class="denoms" style="font-size:12px;opacity:.85;margin-top:2px"><span class="line-through opacity-50">$50.00</span> · Pay <b>$40.00</b></div>
         </div>
-        <span class="cell rounded-full px-3 py-1.5 text-xs">-20% off all denoms</span>
       </div>
-      <div class="flex gap-4 overflow-x-auto pb-2">
-        <div class="gc gc-fortnite shrink-0 w-52" style="aspect-ratio:auto;min-height:200px">
-          <div class="flex items-start justify-between"><img style="height:22px" src="https://cdn.simpleicons.org/fortnite/ffffff" alt="Fortnite"/><span class="disc">-20%</span></div>
-          <div class="logo-wrap" style="flex:1"><div class="text-4xl font-black mono">1,000</div></div>
-          <div><div class="brand" style="font-size:13px">V-Bucks</div><div class="denoms" style="font-size:11px;opacity:.85">Pay $6.40</div></div>
+      <!-- $100 / -25% -->
+      <div class="gc gc-steam" style="aspect-ratio:auto;min-height:240px;position:relative">
+        <div class="absolute -top-2.5 right-4 bg-emerald-500 text-black text-[10px] font-black px-2.5 py-1 rounded">BEST VALUE</div>
+        <div class="flex items-start justify-between">
+          <img style="height:28px" src="https://cdn.simpleicons.org/steam/c7d5e0" alt="Steam"/>
+          <span class="disc">-25%</span>
         </div>
-        <div class="gc gc-fortnite shrink-0 w-52" style="aspect-ratio:auto;min-height:200px">
-          <div class="flex items-start justify-between"><img style="height:22px" src="https://cdn.simpleicons.org/fortnite/ffffff" alt="Fortnite"/><span class="disc">-20%</span></div>
-          <div class="logo-wrap" style="flex:1"><div class="text-4xl font-black mono">2,800</div></div>
-          <div><div class="brand" style="font-size:13px">V-Bucks</div><div class="denoms" style="font-size:11px;opacity:.85">Pay $17.60</div></div>
-        </div>
-        <div class="gc gc-fortnite shrink-0 w-52 ring-2 ring-white/40" style="aspect-ratio:auto;min-height:200px;position:relative">
-          <div class="absolute -top-2 left-3 bg-white text-black text-[9px] font-black px-2 py-0.5 rounded">★ SEV'S TOP</div>
-          <div class="flex items-start justify-between"><img style="height:22px" src="https://cdn.simpleicons.org/fortnite/ffffff" alt="Fortnite"/><span class="disc">-20%</span></div>
-          <div class="logo-wrap" style="flex:1"><div class="text-4xl font-black mono">5,000</div></div>
-          <div><div class="brand" style="font-size:13px">V-Bucks</div><div class="denoms" style="font-size:11px;opacity:.85">Pay $32.00</div></div>
-        </div>
-        <div class="gc gc-fortnite shrink-0 w-52" style="aspect-ratio:auto;min-height:200px">
-          <div class="flex items-start justify-between"><img style="height:22px" src="https://cdn.simpleicons.org/fortnite/ffffff" alt="Fortnite"/><span class="disc">-20%</span></div>
-          <div class="logo-wrap" style="flex:1"><div class="text-4xl font-black mono">13,500</div></div>
-          <div><div class="brand" style="font-size:13px">V-Bucks</div><div class="denoms" style="font-size:11px;opacity:.85">Pay $80.00</div></div>
+        <div class="logo-wrap" style="flex:1"><div class="text-6xl font-black mono">$100</div></div>
+        <div>
+          <div class="brand" style="font-size:14px">Steam Wallet</div>
+          <div class="denoms" style="font-size:12px;opacity:.85;margin-top:2px"><span class="line-through opacity-50">$100.00</span> · Pay <b>$75.00</b></div>
         </div>
       </div>
     </div>
