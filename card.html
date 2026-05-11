@@ -131,31 +131,24 @@
 <section class="relative">
   <div class="hero-bg grain"></div>
   <div class="relative max-w-[1400px] mx-auto px-6 pt-8 pb-16">
-    <div class="grid grid-cols-12 gap-10 items-center">
-      <!-- left: giftcard art -->
-      <div class="col-span-12 lg:col-span-6">
-        <div class="gc gc-steam">
+    <div class="grid grid-cols-12 gap-10 items-stretch">
+      <!-- left: giftcard art (vertically centered to balance with right) -->
+      <div class="col-span-12 lg:col-span-6 flex items-center">
+        <div class="gc gc-steam w-full">
           <span class="disc" style="position:absolute;top:18px;right:18px">-20%</span>
           <div class="logo-wrap">
             <img class="logo" src="https://cdn.simpleicons.org/steam/c7d5e0" alt="Steam"/>
           </div>
           <div>
             <div class="brand">Steam Wallet</div>
-            <div class="denoms-row">$10 · $25 · $50 · $100 USD</div>
+            <div class="denoms-row">$5 · $10 · $20 · $25 · $50 · $100 · $150 · $200 USD</div>
           </div>
         </div>
       </div>
 
       <!-- right: product card -->
-      <div class="col-span-12 lg:col-span-6">
-        <div class="flex items-center gap-2 mb-3">
-          <span class="text-[10px] uppercase tracking-[0.3em] text-white/55 font-semibold">PC · Gaming</span>
-          <span class="cell px-2 py-0.5 rounded text-[10px] font-bold flex items-center gap-1"><span class="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span> In stock</span>
-        </div>
-
+      <div class="col-span-12 lg:col-span-6 flex flex-col justify-center">
         <h1 class="text-5xl font-black grot leading-[0.95] tracking-tight">Steam Wallet <span class="text-white/45 font-bold">Gift Card</span></h1>
-
-        <p class="text-white/70 mt-4 max-w-lg">Top up your Steam Wallet to buy games, DLC, in-game items, and more on Steam — the largest digital PC games platform.</p>
 
         <!-- price block -->
         <div class="mt-6 flex items-end gap-4">
@@ -170,10 +163,14 @@
         <div class="mt-6">
           <div class="text-xs uppercase tracking-widest text-white/45 font-semibold mb-3">Choose denomination</div>
           <div class="grid grid-cols-4 gap-3">
+            <div class="denom" data-face="5" data-pay="4.00"><div class="face">$5</div><div class="pay">Pay $4.00</div></div>
             <div class="denom" data-face="10" data-pay="8.00"><div class="face">$10</div><div class="pay">Pay $8.00</div></div>
+            <div class="denom" data-face="20" data-pay="16.00"><div class="face">$20</div><div class="pay">Pay $16.00</div></div>
             <div class="denom" data-face="25" data-pay="20.00"><div class="face">$25</div><div class="pay">Pay $20.00</div></div>
             <div class="denom selected" data-face="50" data-pay="40.00"><div class="face">$50</div><div class="pay">Pay $40.00</div></div>
             <div class="denom" data-face="100" data-pay="80.00"><div class="face">$100</div><div class="pay">Pay $80.00</div></div>
+            <div class="denom" data-face="150" data-pay="120.00"><div class="face">$150</div><div class="pay">Pay $120.00</div></div>
+            <div class="denom" data-face="200" data-pay="160.00"><div class="face">$200</div><div class="pay">Pay $160.00</div></div>
           </div>
         </div>
 
