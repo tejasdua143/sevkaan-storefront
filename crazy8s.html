@@ -1,0 +1,746 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Influencer Storefront — Crazy 8s · Round 4 (Cinematic orange · deep)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif&family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@400;600;700&family=Anton&display=swap" rel="stylesheet">
+<style>
+  :root { --avatar: url('https://static-cdn.jtvnw.net/jtv_user_pictures/47b56620-6ebe-4195-b2d2-f8062b87ac33-profile_image-300x300.png'); }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', system-ui, sans-serif; background: #0b0b0f; color: #fff; }
+  .grot  { font-family: 'Bricolage Grotesque', sans-serif; }
+  .space { font-family: 'Space Grotesk', sans-serif; }
+  .mono  { font-family: 'JetBrains Mono', monospace; }
+  .anton { font-family: 'Anton', sans-serif; letter-spacing:.01em; }
+  .serif { font-family: 'Instrument Serif', Georgia, serif; }
+
+  .variant { border: 1px solid rgba(255,255,255,.06); border-radius: 18px; overflow: hidden; background: #0e0e13; box-shadow: 0 30px 80px rgba(0,0,0,.5); }
+  .label-pill { display:inline-flex; align-items:center; gap:.5rem; padding:.45rem .8rem; border-radius:999px; background:rgba(255,255,255,.06); color:#fff; font-weight:600; font-size:.78rem; letter-spacing:.04em; text-transform:uppercase; }
+  .grain::before { content:""; position:absolute; inset:0; background-image: radial-gradient(rgba(255,255,255,.04) 1px, transparent 1px); background-size: 3px 3px; pointer-events:none; mix-blend-mode: overlay; }
+
+  .gc { position:relative; aspect-ratio: 1.586/1; border-radius: 14px; padding: 14px 16px; display:flex; flex-direction:column; justify-content:space-between; overflow:hidden; box-shadow: 0 12px 26px rgba(0,0,0,.45); border: 1px solid rgba(255,255,255,.08); transition: transform .25s ease, box-shadow .25s ease; color:#fff; }
+  .gc:hover { transform: translateY(-3px); box-shadow: 0 18px 36px rgba(0,0,0,.55); }
+  .gc .brand { font-weight: 800; letter-spacing:-.01em; font-size: 18px; }
+  .gc .amt   { font-size: 12px; opacity:.85; font-weight:600; }
+  .gc .chip  { position:absolute; top:10px; right:10px; font-size: 10px; padding: 3px 7px; border-radius: 999px; background: rgba(0,0,0,.35); color:#fff; font-weight:600; }
+  .gc-amazon  { background: linear-gradient(135deg,#0f1111 0%,#232f3e 100%); }
+  .gc-amazon  .arrow { width:42px; height:14px; border-bottom:2px solid #ff9900; border-radius: 0 0 21px 21px / 0 0 8px 8px; position:relative; }
+  .gc-amazon  .arrow::after { content:""; position:absolute; right:-2px; bottom:-2px; width:0; height:0; border-left:5px solid transparent; border-bottom:7px solid #ff9900; transform: rotate(35deg); }
+  .gc-steam   { background: linear-gradient(135deg,#171a21 0%,#1b2838 100%); color:#c7d5e0; }
+  .gc-steam   .dot { width:18px; height:18px; border-radius:50%; border:2px solid #66c0f4; position:relative; }
+  .gc-steam   .dot::after { content:""; position:absolute; inset:4px; border-radius:50%; background:#66c0f4; }
+  .gc-ps      { background: radial-gradient(140% 80% at 0% 0%, #003791 0%, #001f5b 100%); }
+  .gc-xbox    { background: linear-gradient(135deg,#0e7a0d 0%,#063b06 100%); }
+  .gc-apple   { background: linear-gradient(180deg,#1a1a1a 0%, #0a0a0a 100%); }
+  .gc-spotify { background: radial-gradient(120% 80% at 100% 0%, #1ed760 0%, #064e2b 100%); color:#0c1f10; }
+  .gc-netflix { background: linear-gradient(180deg,#1a0608 0%,#0a0203 100%); }
+  .gc-netflix .brand { color:#e50914; letter-spacing:.05em; }
+  .gc-nike    { background: linear-gradient(180deg,#fafafa 0%,#dadada 100%); color:#111; }
+  .gc-ubereats{ background: linear-gradient(135deg,#000 0%,#0a3a14 100%); color:#06c167; }
+  .gc-starbucks { background: linear-gradient(135deg,#006241 0%,#003820 100%); }
+  .gc-roblox  { background: linear-gradient(135deg,#111 0%,#3a0007 100%); }
+  .gc-roblox  .brand { color:#ff3b30; }
+  .gc-riot    { background: linear-gradient(135deg,#d13639 0%,#7a1518 100%); }
+  .gc-doordash{ background: linear-gradient(135deg,#ff3008 0%,#992700 100%); }
+  .gc-airbnb  { background: linear-gradient(135deg,#ff385c 0%,#a3092a 100%); }
+  .gc-twitch  { background: linear-gradient(135deg,#6441a5 0%,#3a1f74 100%); }
+  .gc-google  { background: linear-gradient(135deg,#1a73e8 0%,#0b3d8a 100%); }
+
+  .av { background-image: var(--avatar); background-size: cover; background-position: center; border-radius: 9999px; }
+  .badge { background: rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12); }
+  .cat-chip { padding: 6px 12px; border-radius: 999px; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04); font-size:13px; color:#e5e5ef; cursor:pointer; }
+  .cat-chip.active { background:#fff; color:#0b0b0f; border-color:#fff; }
+
+  .sk-orange { color:#ff7a00; }
+  .sk-grad   { background: linear-gradient(135deg,#ff7a00 0%,#ff3b30 100%); }
+  .sk-grad-text { background: linear-gradient(135deg,#ff7a00 0%,#ff3b30 100%); -webkit-background-clip:text; background-clip:text; color:transparent; }
+
+  @keyframes pulse-dot { 0%,100% { box-shadow: 0 0 0 0 rgba(239,68,68,.6); } 70% { box-shadow: 0 0 0 8px rgba(239,68,68,0); } }
+  .live-dot { animation: pulse-dot 1.6s infinite; }
+  @keyframes orb { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(20px,-20px) scale(1.05); } }
+  .orb { animation: orb 8s ease-in-out infinite; }
+  @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+  .shimmer { background: linear-gradient(90deg, transparent, rgba(255,122,0,.25), transparent); background-size: 200% 100%; animation: shimmer 3s linear infinite; }
+
+  .cell { background: rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:10px; }
+  .ext-link { display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border-radius:999px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12); font-size:12px; color:#fff; transition: background .15s; }
+  .ext-link:hover { background:rgba(255,255,255,.15); }
+  .ext-twitch { background: rgba(145,70,255,.18); border-color: rgba(145,70,255,.4); }
+  .ext-yt    { background: rgba(255,0,0,.15); border-color: rgba(255,0,0,.4); }
+  .ext-tw    { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.2); }
+  .ext-ig    { background: linear-gradient(135deg, rgba(247,119,55,.2), rgba(225,48,108,.18)); border-color: rgba(225,48,108,.4); }
+  .ext-tk    { background: rgba(0,0,0,.4); border-color: rgba(37,244,238,.4); }
+  .ext-dc    { background: rgba(88,101,242,.18); border-color: rgba(88,101,242,.4); }
+
+  /* shared cinematic banner gradients */
+  .cin-bg { background: linear-gradient(115deg, #0b0b14 0%, #160a05 40%, #2a0e02 75%, #ff7a00 130%); }
+  .cin-bg-2 { background: radial-gradient(80% 90% at 80% 30%, #ff7a00 0%, transparent 55%), linear-gradient(180deg,#08080c 0%, #1a0706 70%, #1c0a02 100%); }
+</style>
+</head>
+<body>
+
+<header class="sticky top-0 z-50 backdrop-blur bg-black/70 border-b border-white/10">
+  <div class="max-w-[1400px] mx-auto px-6 py-3 flex items-center gap-4 flex-wrap">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-lg sk-grad flex items-center justify-center text-black font-black">8</div>
+      <div>
+        <div class="text-sm font-bold">Crazy 8s · Round 4</div>
+        <div class="text-xs text-white/60">Deep on <span class="sk-grad-text font-semibold">Cinematic orange</span> · vary hero + ext-link UX + rail + grid</div>
+      </div>
+    </div>
+    <nav class="ml-auto flex gap-1.5 text-xs flex-wrap">
+      <a href="#v1" class="badge px-2.5 py-1 rounded-md hover:bg-white/15">01 Seed ★</a>
+      <a href="#v2" class="badge px-2.5 py-1 rounded-md hover:bg-white/15">02 Avatar-XL</a>
+      <a href="#v3" class="badge px-2.5 py-1 rounded-md hover:bg-white/15">03 Headline-first</a>
+      <a href="#v4" class="badge px-2.5 py-1 rounded-md hover:bg-white/15">04 Stat-strip</a>
+      <a href="#v5" class="badge px-2.5 py-1 rounded-md hover:bg-white/15">05 Asymmetric split</a>
+      <a href="#v6" class="badge px-2.5 py-1 rounded-md hover:bg-white/15">06 CTA-dominant</a>
+      <a href="#v7" class="badge px-2.5 py-1 rounded-md hover:bg-white/15">07 Widescreen slim</a>
+      <a href="#v8" class="badge px-2.5 py-1 rounded-md hover:bg-white/15">08 Drop-strip</a>
+    </nav>
+  </div>
+</header>
+
+<main class="max-w-[1400px] mx-auto px-6 py-10 space-y-16">
+
+<!-- ============================================ -->
+<!-- 01 · SEED — current cinematic                  -->
+<!-- ============================================ -->
+<section id="v1" class="variant">
+  <div class="px-6 py-4 border-b border-white/10 flex items-center justify-between bg-black/40">
+    <span class="label-pill"><span class="sk-orange">★</span> 01 · Seed</span>
+    <span class="text-xs text-white/50">cinematic banner · ext-link pills · quote-chip rail · top cat-chips · 6-col grid</span>
+  </div>
+  <div class="relative h-[420px] overflow-hidden grain cin-bg">
+    <div class="absolute -bottom-20 -right-20 w-[520px] h-[520px] rounded-full opacity-30 blur-3xl orb" style="background:#ff7a00"></div>
+    <div class="absolute inset-0 px-12 py-12 flex items-center">
+      <div class="av w-44 h-44 ring-8 ring-black/40 shadow-2xl"></div>
+      <div class="ml-10 flex-1">
+        <div class="text-xs uppercase tracking-[0.3em] text-white/60 mb-3">Storefront · est. 2026</div>
+        <h1 class="text-7xl font-black grot leading-none">SEVKAAN</h1>
+        <p class="text-white/80 max-w-lg mt-4 text-lg">Content Creator · <span class="sk-grad-text font-bold">SK Gaming</span>. The only storefront where my chat actually agreed on the picks.</p>
+        <div class="mt-5 flex gap-2 flex-wrap">
+          <a class="ext-link ext-twitch" href="#">🟣 twitch</a>
+          <a class="ext-link ext-yt" href="#">▶ YouTube</a>
+          <a class="ext-link ext-tw" href="#">𝕏 @sevkaan</a>
+          <a class="ext-link ext-ig" href="#">📷 Instagram</a>
+          <a class="ext-link ext-tk" href="#">♪ TikTok</a>
+          <a class="ext-link ext-dc" href="#">💬 Discord</a>
+        </div>
+        <div class="text-xs flex gap-4 mt-4 text-white/60"><span>● 547 live now</span><span>● 2,847 supporters</span><span>● Verified partner</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="px-10 py-8 border-b border-white/10">
+    <div class="flex items-center justify-between mb-4">
+      <h2 class="text-xl font-bold">Sevkaan picks · 6</h2>
+      <div class="flex gap-2"><button class="badge w-9 h-9 rounded-full">‹</button><button class="badge w-9 h-9 rounded-full">›</button></div>
+    </div>
+    <div class="flex gap-4 overflow-x-auto pb-2">
+      <div class="gc gc-steam shrink-0 w-64"><span class="chip">#1</span><div class="brand space">STEAM</div><div class="dot"></div><div class="amt">"Chat's home."</div></div>
+      <div class="gc gc-riot shrink-0 w-64"><span class="chip">VALO</span><div class="brand space">RIOT</div><div class="amt">$10–$100</div></div>
+      <div class="gc gc-roblox shrink-0 w-64"><span class="chip">YOUNG CHAT</span><div class="brand space">ROBLOX</div><div class="amt">$10–$100</div></div>
+      <div class="gc gc-spotify shrink-0 w-64"><span class="chip" style="background:rgba(0,0,0,.5);color:#fff">SOUNDTRACK</span><div class="brand">Spotify</div><div class="amt">3/6/12 mo</div></div>
+      <div class="gc gc-netflix shrink-0 w-64"><span class="chip">POST‑STREAM</span><div class="brand">NETFLIX</div><div class="amt">$25 · $50</div></div>
+      <div class="gc gc-ubereats shrink-0 w-64"><span class="chip">3AM</span><div class="brand">Uber Eats</div><div class="amt">$15–$100</div></div>
+    </div>
+  </div>
+  <div class="px-10 py-8">
+    <div class="flex gap-2 flex-wrap mb-5">
+      <span class="cat-chip active">All 200</span><span class="cat-chip">Gaming 42</span><span class="cat-chip">Streaming 18</span><span class="cat-chip">Shopping 64</span><span class="cat-chip">Food 31</span><span class="cat-chip">Travel 22</span>
+    </div>
+    <div class="grid grid-cols-6 gap-3">
+      <div class="gc gc-amazon"><div class="brand">amazon</div><div class="arrow"></div><div class="amt">$5–$500</div></div>
+      <div class="gc gc-apple"><div class="brand">Apple</div><div class="amt">App Store</div></div>
+      <div class="gc gc-ps"><div class="brand">PlayStation</div><div class="amt">$10–$100</div></div>
+      <div class="gc gc-xbox"><div class="brand">Xbox</div><div class="amt">$15–$100</div></div>
+      <div class="gc gc-nike"><div class="brand">NIKE</div><div class="amt">$25–$500</div></div>
+      <div class="gc gc-starbucks"><div class="brand">Starbucks</div><div class="amt">$10–$100</div></div>
+      <div class="gc gc-doordash"><div class="brand">DOORDASH</div><div class="amt">$25–$100</div></div>
+      <div class="gc gc-airbnb"><div class="brand">airbnb</div><div class="amt">$100–$500</div></div>
+      <div class="gc gc-google"><div class="brand">Google Play</div><div class="amt">$10–$100</div></div>
+      <div class="gc gc-twitch"><div class="brand">Twitch Bits</div><div class="amt">100–10k</div></div>
+      <div class="gc gc-netflix"><div class="brand">NETFLIX</div><div class="amt">$25 · $50</div></div>
+      <div class="gc" style="background:rgba(255,255,255,.03);border-style:dashed"><div class="brand text-white/40">+188</div><div class="amt text-white/40">View all</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- 02 · Avatar-XL — huge avatar breaks banner edge -->
+<!-- ============================================ -->
+<section id="v2" class="variant">
+  <div class="px-6 py-4 border-b border-white/10 flex items-center justify-between bg-black/40">
+    <span class="label-pill">02 · Avatar-XL</span>
+    <span class="text-xs text-white/50">XL avatar overlap · ext-links as count badges · commentary-paired rail · 6-col with hover Buy</span>
+  </div>
+  <div class="relative h-[500px] overflow-visible grain cin-bg">
+    <div class="absolute -bottom-20 -right-20 w-[520px] h-[520px] rounded-full opacity-30 blur-3xl orb" style="background:#ff7a00"></div>
+    <div class="absolute inset-0 px-12 py-12 flex items-center">
+      <!-- avatar XL breaks bottom -->
+      <div class="relative -mb-32 shrink-0">
+        <div class="av w-72 h-72 ring-[12px] ring-orange-600/40 shadow-2xl"></div>
+        <div class="absolute -bottom-2 -right-2 sk-grad text-black anton text-2xl rounded-full w-16 h-16 flex items-center justify-center shadow-xl">07</div>
+      </div>
+      <div class="ml-12 flex-1">
+        <div class="text-xs uppercase tracking-[0.3em] text-orange-300 mb-2">Storefront — Sevkaan × SK Gaming</div>
+        <h1 class="text-[5.5rem] font-black grot leading-[0.9]">SEV<span class="sk-grad-text">KAAN</span></h1>
+        <p class="text-white/80 max-w-lg mt-3">German Twitch partner. 200 hand-picked gift cards. Same prices, supports the stream.</p>
+        <!-- ext-links as count badges -->
+        <div class="mt-5 grid grid-cols-3 gap-2 max-w-2xl">
+          <a class="ext-link ext-twitch !justify-between !w-full" href="#"><span>🟣 Twitch</span><b class="mono">42.1K</b></a>
+          <a class="ext-link ext-yt !justify-between !w-full" href="#"><span>▶ YouTube</span><b class="mono">18.4K</b></a>
+          <a class="ext-link ext-tw !justify-between !w-full" href="#"><span>𝕏 Twitter</span><b class="mono">9.2K</b></a>
+          <a class="ext-link ext-ig !justify-between !w-full" href="#"><span>📷 Instagram</span><b class="mono">11.7K</b></a>
+          <a class="ext-link ext-tk !justify-between !w-full" href="#"><span>♪ TikTok</span><b class="mono">31.5K</b></a>
+          <a class="ext-link ext-dc !justify-between !w-full" href="#"><span>💬 Discord</span><b class="mono">3.8K</b></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="px-10 pt-20 pb-8 border-b border-white/10">
+    <div class="flex items-end justify-between mb-5">
+      <div>
+        <h2 class="text-2xl font-bold">Sev's picks · with the why</h2>
+        <p class="text-sm text-white/50">Commentary by Sev. Tap to buy.</p>
+      </div>
+      <div class="flex gap-2"><button class="badge w-9 h-9 rounded-full">‹</button><button class="badge w-9 h-9 rounded-full">›</button></div>
+    </div>
+    <div class="flex gap-4 overflow-x-auto pb-2">
+      <div class="shrink-0 w-72"><div class="gc gc-steam aspect-[1.6/1]"><span class="chip">#1</span><div class="brand space">STEAM</div><div class="dot"></div></div><p class="text-sm text-white/70 mt-3 leading-snug">"Chat's home. Where I die in Valorant. Where my wallet goes to retire."</p></div>
+      <div class="shrink-0 w-72"><div class="gc gc-riot aspect-[1.6/1]"><span class="chip">#2</span><div class="brand space">RIOT</div></div><p class="text-sm text-white/70 mt-3 leading-snug">"VP for the bundle you keep telling yourself you don't need."</p></div>
+      <div class="shrink-0 w-72"><div class="gc gc-spotify aspect-[1.6/1]"><span class="chip" style="background:rgba(0,0,0,.5);color:#fff">#3</span><div class="brand">Spotify</div></div><p class="text-sm text-white/70 mt-3 leading-snug">"My stream OST is open-source. Bring ears, leave with music."</p></div>
+      <div class="shrink-0 w-72"><div class="gc gc-roblox aspect-[1.6/1]"><span class="chip">#4</span><div class="brand space">ROBLOX</div></div><p class="text-sm text-white/70 mt-3 leading-snug">"You have an account. Statistically. I don't make the rules."</p></div>
+    </div>
+  </div>
+
+  <div class="px-10 py-8">
+    <div class="flex gap-2 flex-wrap mb-5">
+      <span class="cat-chip active">All 200</span><span class="cat-chip">Gaming 42</span><span class="cat-chip">Streaming 18</span><span class="cat-chip">Shopping 64</span><span class="cat-chip">Food 31</span>
+    </div>
+    <div class="grid grid-cols-6 gap-3">
+      <div class="gc gc-amazon group"><div class="brand">amazon</div><div class="arrow"></div><div class="amt">$5–$500</div><div class="absolute inset-x-2 bottom-2 opacity-0 group-hover:opacity-100 transition"><button class="w-full sk-grad text-black text-xs py-1 rounded font-bold">Buy</button></div></div>
+      <div class="gc gc-apple group"><div class="brand">Apple</div><div class="amt">App Store</div><div class="absolute inset-x-2 bottom-2 opacity-0 group-hover:opacity-100 transition"><button class="w-full sk-grad text-black text-xs py-1 rounded font-bold">Buy</button></div></div>
+      <div class="gc gc-ps"><div class="brand">PlayStation</div><div class="amt">$10–$100</div></div>
+      <div class="gc gc-xbox"><div class="brand">Xbox</div><div class="amt">$15–$100</div></div>
+      <div class="gc gc-nike"><div class="brand">NIKE</div><div class="amt">$25–$500</div></div>
+      <div class="gc gc-starbucks"><div class="brand">Starbucks</div><div class="amt">$10–$100</div></div>
+      <div class="gc gc-doordash"><div class="brand">DOORDASH</div><div class="amt">$25–$100</div></div>
+      <div class="gc gc-airbnb"><div class="brand">airbnb</div><div class="amt">$100–$500</div></div>
+      <div class="gc gc-google"><div class="brand">Google Play</div><div class="amt">$10–$100</div></div>
+      <div class="gc gc-twitch"><div class="brand">Twitch Bits</div><div class="amt">100–10k</div></div>
+      <div class="gc gc-netflix"><div class="brand">NETFLIX</div><div class="amt">$25 · $50</div></div>
+      <div class="gc gc-ubereats"><div class="brand">Uber Eats</div><div class="amt">$15–$100</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- 03 · Headline-first — tiny avatar, massive type -->
+<!-- ============================================ -->
+<section id="v3" class="variant">
+  <div class="px-6 py-4 border-b border-white/10 flex items-center justify-between bg-black/40">
+    <span class="label-pill">03 · Headline-first</span>
+    <span class="text-xs text-white/50">small avatar chip · oversize Anton headline · ext-links 2×3 labeled tile grid · 5-col grid</span>
+  </div>
+  <div class="relative h-[500px] overflow-hidden cin-bg-2 grain">
+    <div class="absolute inset-0 px-12 py-10 flex flex-col justify-between">
+      <!-- top: small avatar chip -->
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-3 badge px-3 py-1.5 rounded-full">
+          <div class="av w-8 h-8"></div>
+          <div class="text-sm font-semibold">Sevkaan</div>
+          <span class="text-xs text-white/50">· SK Gaming · DE</span>
+          <span class="text-[10px] uppercase tracking-widest text-red-300 ml-1 flex items-center gap-1"><span class="w-1.5 h-1.5 bg-red-500 rounded-full live-dot"></span>LIVE</span>
+        </div>
+        <div class="text-xs text-white/50 mono">est. 2026 · ID-SEV-07</div>
+      </div>
+      <!-- center: huge headline -->
+      <div>
+        <div class="text-xs uppercase tracking-[0.3em] text-orange-300 mb-3">Storefront</div>
+        <h1 class="anton text-[11rem] leading-[0.85] tracking-tight">GIFT CARDS<br/><span class="sk-grad-text">BY SEVKAAN.</span></h1>
+        <p class="text-white/70 mt-4 text-lg max-w-lg">200 hand-picked brands. 6 personal favourites. Same prices everywhere else.</p>
+      </div>
+      <!-- bottom: ext-links 2x3 tiles -->
+      <div class="grid grid-cols-6 gap-2">
+        <a class="ext-link ext-twitch !justify-center !flex-col !py-3" href="#"><span class="text-xl">🟣</span><span class="text-[11px] mt-1">twitch</span><b class="text-[10px] text-white/70">42.1K</b></a>
+        <a class="ext-link ext-yt !justify-center !flex-col !py-3" href="#"><span class="text-xl">▶</span><span class="text-[11px] mt-1">YouTube</span><b class="text-[10px] text-white/70">18.4K</b></a>
+        <a class="ext-link ext-tw !justify-center !flex-col !py-3" href="#"><span class="text-xl">𝕏</span><span class="text-[11px] mt-1">Twitter</span><b class="text-[10px] text-white/70">9.2K</b></a>
+        <a class="ext-link ext-ig !justify-center !flex-col !py-3" href="#"><span class="text-xl">📷</span><span class="text-[11px] mt-1">Instagram</span><b class="text-[10px] text-white/70">11.7K</b></a>
+        <a class="ext-link ext-tk !justify-center !flex-col !py-3" href="#"><span class="text-xl">♪</span><span class="text-[11px] mt-1">TikTok</span><b class="text-[10px] text-white/70">31.5K</b></a>
+        <a class="ext-link ext-dc !justify-center !flex-col !py-3" href="#"><span class="text-xl">💬</span><span class="text-[11px] mt-1">Discord</span><b class="text-[10px] text-white/70">3.8K</b></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="px-10 py-8 border-b border-white/10">
+    <div class="flex items-end justify-between mb-4">
+      <h2 class="text-xl font-bold">Sev's picks <span class="text-white/40 text-sm font-normal">· game-tag style</span></h2>
+      <a class="text-xs text-white/60">See all →</a>
+    </div>
+    <div class="flex gap-4 overflow-x-auto pb-2">
+      <div class="gc gc-steam shrink-0 w-60"><span class="chip">🎮 PC</span><div class="brand space">STEAM</div><div class="dot"></div><div class="amt">$25 · $50 · $100</div></div>
+      <div class="gc gc-riot shrink-0 w-60"><span class="chip">🎯 VALO</span><div class="brand space">RIOT</div><div class="amt">VP · $10–$100</div></div>
+      <div class="gc gc-spotify shrink-0 w-60"><span class="chip" style="background:rgba(0,0,0,.5);color:#fff">🎧 SOUND</span><div class="brand">Spotify</div><div class="amt">3/6/12 mo</div></div>
+      <div class="gc gc-roblox shrink-0 w-60"><span class="chip">🧱 ROBUX</span><div class="brand space">ROBLOX</div><div class="amt">$10–$100</div></div>
+      <div class="gc gc-netflix shrink-0 w-60"><span class="chip">📺 TV</span><div class="brand">NETFLIX</div><div class="amt">$25 · $50</div></div>
+      <div class="gc gc-ubereats shrink-0 w-60"><span class="chip">🍔 EATS</span><div class="brand">Uber Eats</div><div class="amt">$15–$100</div></div>
+    </div>
+  </div>
+
+  <div class="px-10 py-8">
+    <div class="flex gap-2 flex-wrap mb-5">
+      <span class="cat-chip active">All 200</span><span class="cat-chip">Gaming 42</span><span class="cat-chip">Streaming 18</span><span class="cat-chip">Shopping 64</span><span class="cat-chip">Food 31</span><span class="cat-chip">Travel 22</span>
+    </div>
+    <div class="grid grid-cols-5 gap-4">
+      <div class="gc gc-amazon"><div class="brand">amazon</div><div class="arrow"></div><div class="amt">$5–$500</div></div>
+      <div class="gc gc-apple"><div class="brand">Apple</div><div class="amt">App Store</div></div>
+      <div class="gc gc-ps"><div class="brand">PlayStation</div><div class="amt">$10–$100</div></div>
+      <div class="gc gc-xbox"><div class="brand">Xbox</div><div class="amt">$15–$100</div></div>
+      <div class="gc gc-nike"><div class="brand">NIKE</div><div class="amt">$25–$500</div></div>
+      <div class="gc gc-starbucks"><div class="brand">Starbucks</div><div class="amt">$10–$100</div></div>
+      <div class="gc gc-doordash"><div class="brand">DOORDASH</div><div class="amt">$25–$100</div></div>
+      <div class="gc gc-airbnb"><div class="brand">airbnb</div><div class="amt">$100–$500</div></div>
+      <div class="gc gc-google"><div class="brand">Google Play</div><div class="amt">$10–$100</div></div>
+      <div class="gc gc-twitch"><div class="brand">Twitch Bits</div><div class="amt">100–10k</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- 04 · Stat-strip — inline metric tiles + ext-link bar with counts -->
+<!-- ============================================ -->
+<section id="v4" class="variant">
+  <div class="px-6 py-4 border-b border-white/10 flex items-center justify-between bg-black/40">
+    <span class="label-pill">04 · Stat-strip</span>
+    <span class="text-xs text-white/50">inline metric tiles in banner · ext-link bar w/ follower counts · denom-led rail · 6-col w/ price tag</span>
+  </div>
+  <div class="relative grain cin-bg overflow-hidden">
+    <div class="absolute -top-20 -right-10 w-[420px] h-[420px] rounded-full opacity-30 blur-3xl orb" style="background:#ff5a1f"></div>
+    <div class="px-12 py-10 relative z-10">
+      <div class="flex items-center gap-8 mb-8">
+        <div class="av w-28 h-28 ring-4 ring-orange-500/60"></div>
+        <div class="flex-1">
+          <div class="text-xs uppercase tracking-[0.3em] text-orange-300 mb-2">Storefront</div>
+          <h1 class="text-6xl font-black grot leading-none">SEVKAAN</h1>
+          <p class="text-white/70 mt-2 max-w-lg">Content Creator · SK Gaming · German Twitch partner.</p>
+        </div>
+        <div class="flex gap-2 flex-col">
+          <button class="sk-grad text-black font-bold px-4 py-2 rounded-lg text-sm">+ Follow on Twitch</button>
+          <button class="badge px-4 py-2 rounded-lg text-sm">⤴ Share storefront</button>
+        </div>
+      </div>
+      <!-- inline metric tiles -->
+      <div class="grid grid-cols-4 gap-3 mb-5">
+        <div class="cell p-4"><div class="text-[10px] uppercase tracking-widest text-white/50">Live now</div><div class="text-2xl font-bold mt-1 flex items-center gap-2"><span class="w-2 h-2 bg-red-500 rounded-full live-dot"></span>547</div></div>
+        <div class="cell p-4"><div class="text-[10px] uppercase tracking-widest text-white/50">Supporters</div><div class="text-2xl font-bold mt-1 sk-grad-text">2,847</div></div>
+        <div class="cell p-4"><div class="text-[10px] uppercase tracking-widest text-white/50">Brands curated</div><div class="text-2xl font-bold mt-1">200</div></div>
+        <div class="cell p-4"><div class="text-[10px] uppercase tracking-widest text-white/50">Total sold</div><div class="text-2xl font-bold mt-1">18,422</div></div>
+      </div>
+      <!-- ext-link bar with counts, full width -->
+      <div class="cell !rounded-xl p-2 flex items-center justify-between gap-2 flex-wrap">
+        <a class="ext-link ext-twitch flex-1 !justify-between" href="#"><span>🟣 Twitch</span><b class="mono">42.1K followers</b></a>
+        <a class="ext-link ext-yt flex-1 !justify-between" href="#"><span>▶ YouTube</span><b class="mono">18.4K subs</b></a>
+        <a class="ext-link ext-tw flex-1 !justify-between" href="#"><span>𝕏 Twitter</span><b class="mono">9.2K</b></a>
+        <a class="ext-link ext-ig flex-1 !justify-between" href="#"><span>📷 Instagram</span><b class="mono">11.7K</b></a>
+        <a class="ext-link ext-tk flex-1 !justify-between" href="#"><span>♪ TikTok</span><b class="mono">31.5K</b></a>
+        <a class="ext-link ext-dc flex-1 !justify-between" href="#"><span>💬 Discord</span><b class="mono">3.8K</b></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="px-10 py-8 border-y border-white/10">
+    <h2 class="text-xl font-bold mb-4">Sev's picks · with prices shown</h2>
+    <div class="flex gap-4 overflow-x-auto pb-2">
+      <div class="shrink-0 w-64"><div class="gc gc-steam aspect-[1.586/1]"><span class="chip">#1</span><div class="brand space">STEAM</div><div class="dot"></div></div><div class="flex gap-2 mt-2"><span class="cell px-2 py-1 text-xs rounded">$25</span><span class="cell px-2 py-1 text-xs rounded">$50</span><span class="cell px-2 py-1 text-xs rounded">$100</span></div></div>
+      <div class="shrink-0 w-64"><div class="gc gc-riot aspect-[1.586/1]"><span class="chip">#2</span><div class="brand space">RIOT</div></div><div class="flex gap-2 mt-2"><span class="cell px-2 py-1 text-xs rounded">$10</span><span class="cell px-2 py-1 text-xs rounded">$25</span><span class="cell px-2 py-1 text-xs rounded">$50</span></div></div>
+      <div class="shrink-0 w-64"><div class="gc gc-spotify aspect-[1.586/1]"><span class="chip" style="background:rgba(0,0,0,.5);color:#fff">#3</span><div class="brand">Spotify</div></div><div class="flex gap-2 mt-2"><span class="cell px-2 py-1 text-xs rounded">3mo</span><span class="cell px-2 py-1 text-xs rounded">6mo</span><span class="cell px-2 py-1 text-xs rounded">12mo</span></div></div>
+      <div class="shrink-0 w-64"><div class="gc gc-roblox aspect-[1.586/1]"><span class="chip">#4</span><div class="brand space">ROBLOX</div></div><div class="flex gap-2 mt-2"><span class="cell px-2 py-1 text-xs rounded">$10</span><span class="cell px-2 py-1 text-xs rounded">$25</span><span class="cell px-2 py-1 text-xs rounded">$50</span></div></div>
+      <div class="shrink-0 w-64"><div class="gc gc-netflix aspect-[1.586/1]"><span class="chip">#5</span><div class="brand">NETFLIX</div></div><div class="flex gap-2 mt-2"><span class="cell px-2 py-1 text-xs rounded">$25</span><span class="cell px-2 py-1 text-xs rounded">$50</span></div></div>
+      <div class="shrink-0 w-64"><div class="gc gc-ubereats aspect-[1.586/1]"><span class="chip">#6</span><div class="brand">Uber Eats</div></div><div class="flex gap-2 mt-2"><span class="cell px-2 py-1 text-xs rounded">$15</span><span class="cell px-2 py-1 text-xs rounded">$50</span><span class="cell px-2 py-1 text-xs rounded">$100</span></div></div>
+    </div>
+  </div>
+
+  <div class="px-10 py-8">
+    <div class="flex items-center justify-between mb-5">
+      <div class="flex gap-2 flex-wrap">
+        <span class="cat-chip active">All 200</span><span class="cat-chip">Gaming 42</span><span class="cat-chip">Streaming 18</span><span class="cat-chip">Shopping 64</span><span class="cat-chip">Food 31</span>
+      </div>
+      <button class="badge px-3 py-1.5 rounded text-xs">Sort: Price ↓ ▾</button>
+    </div>
+    <div class="grid grid-cols-6 gap-3">
+      <div class="gc gc-amazon"><div class="brand">amazon</div><div class="arrow"></div><div class="amt">from <b class="sk-grad-text">$5</b></div></div>
+      <div class="gc gc-apple"><div class="brand">Apple</div><div class="amt">from <b class="sk-grad-text">$10</b></div></div>
+      <div class="gc gc-ps"><div class="brand">PlayStation</div><div class="amt">from <b class="sk-grad-text">$10</b></div></div>
+      <div class="gc gc-xbox"><div class="brand">Xbox</div><div class="amt">from <b class="sk-grad-text">$15</b></div></div>
+      <div class="gc gc-nike"><div class="brand">NIKE</div><div class="amt">from <b style="color:#ff7a00">$25</b></div></div>
+      <div class="gc gc-starbucks"><div class="brand">Starbucks</div><div class="amt">from <b class="sk-grad-text">$10</b></div></div>
+      <div class="gc gc-doordash"><div class="brand">DOORDASH</div><div class="amt">from <b class="sk-grad-text">$25</b></div></div>
+      <div class="gc gc-airbnb"><div class="brand">airbnb</div><div class="amt">from <b class="sk-grad-text">$100</b></div></div>
+      <div class="gc gc-google"><div class="brand">Google Play</div><div class="amt">from <b class="sk-grad-text">$10</b></div></div>
+      <div class="gc gc-twitch"><div class="brand">Twitch Bits</div><div class="amt">from <b class="sk-grad-text">100</b></div></div>
+      <div class="gc gc-netflix"><div class="brand">NETFLIX</div><div class="amt">from <b class="sk-grad-text">$25</b></div></div>
+      <div class="gc gc-ubereats"><div class="brand">Uber Eats</div><div class="amt">from <b class="sk-grad-text">$15</b></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- 05 · Asymmetric split — avatar half, content half + ext-links vertical -->
+<!-- ============================================ -->
+<section id="v5" class="variant">
+  <div class="px-6 py-4 border-b border-white/10 flex items-center justify-between bg-black/40">
+    <span class="label-pill">05 · Asymmetric split</span>
+    <span class="text-xs text-white/50">50/50 banner · ext-links as vertical column · numbered editorial rail · 6-col w/ sort dropdown</span>
+  </div>
+  <div class="grid grid-cols-12 h-[480px] cin-bg">
+    <!-- left: huge avatar panel -->
+    <div class="col-span-5 relative overflow-hidden grain">
+      <div class="absolute inset-0 av"></div>
+      <div class="absolute inset-0" style="background:linear-gradient(90deg, transparent 0%, rgba(11,11,15,.85) 100%)"></div>
+      <div class="absolute bottom-6 left-6 right-12 text-xs flex flex-col gap-2">
+        <span class="ext-link ext-twitch self-start">🟣 Live: VALORANT · 547 watching</span>
+      </div>
+    </div>
+    <!-- right: content -->
+    <div class="col-span-7 px-12 py-10 flex flex-col justify-between">
+      <div>
+        <div class="text-xs uppercase tracking-[0.3em] text-orange-300 mb-3">Storefront · curated by</div>
+        <h1 class="text-7xl font-black grot leading-[0.95]">Sevkaan</h1>
+        <p class="text-white/70 mt-4 max-w-md text-lg">SK Gaming content creator. 200 gift cards I'd actually use, ranked by my chat's bullying.</p>
+        <div class="mt-5 flex gap-2">
+          <button class="sk-grad text-black font-bold px-5 py-2.5 rounded-lg">Follow on Twitch</button>
+          <button class="badge px-5 py-2.5 rounded-lg">Share store</button>
+        </div>
+      </div>
+      <!-- ext-links vertical column -->
+      <div class="grid grid-cols-2 gap-2 max-w-md">
+        <a class="ext-link ext-twitch !justify-between" href="#"><span>🟣 twitch.tv/sevkaan</span><span class="text-white/50 text-[10px]">↗</span></a>
+        <a class="ext-link ext-yt !justify-between" href="#"><span>▶ youtube/@sevkaan</span><span class="text-white/50 text-[10px]">↗</span></a>
+        <a class="ext-link ext-tw !justify-between" href="#"><span>𝕏 @sevkaan</span><span class="text-white/50 text-[10px]">↗</span></a>
+        <a class="ext-link ext-ig !justify-between" href="#"><span>📷 @sevkaan</span><span class="text-white/50 text-[10px]">↗</span></a>
+        <a class="ext-link ext-tk !justify-between" href="#"><span>♪ tiktok/@sevkaan</span><span class="text-white/50 text-[10px]">↗</span></a>
+        <a class="ext-link ext-dc !justify-between" href="#"><span>💬 discord.gg/sevkaan</span><span class="text-white/50 text-[10px]">↗</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="px-10 py-8 border-y border-white/10">
+    <h2 class="text-xl font-bold mb-5">The six · ranked by chat</h2>
+    <div class="grid grid-cols-3 gap-5">
+      <div class="flex gap-3"><div class="anton text-5xl sk-grad-text">01</div><div class="flex-1"><div class="gc gc-steam aspect-[1.6/1] mb-2"><div class="brand space">STEAM</div><div class="dot"></div></div><div class="text-xs text-white/70">"Chat's home." · $25–$100</div></div></div>
+      <div class="flex gap-3"><div class="anton text-5xl sk-grad-text">02</div><div class="flex-1"><div class="gc gc-riot aspect-[1.6/1] mb-2"><div class="brand space">RIOT</div></div><div class="text-xs text-white/70">"VP regret." · $10–$100</div></div></div>
+      <div class="flex gap-3"><div class="anton text-5xl sk-grad-text">03</div><div class="flex-1"><div class="gc gc-spotify aspect-[1.6/1] mb-2"><div class="brand">Spotify</div></div><div class="text-xs text-white/70">"Stream OST." · 3/6/12 mo</div></div></div>
+      <div class="flex gap-3"><div class="anton text-5xl sk-grad-text">04</div><div class="flex-1"><div class="gc gc-roblox aspect-[1.6/1] mb-2"><div class="brand space">ROBLOX</div></div><div class="text-xs text-white/70">"Don't ask." · $10–$100</div></div></div>
+      <div class="flex gap-3"><div class="anton text-5xl sk-grad-text">05</div><div class="flex-1"><div class="gc gc-netflix aspect-[1.6/1] mb-2"><div class="brand">NETFLIX</div></div><div class="text-xs text-white/70">"Post-stream." · $25–$50</div></div></div>
+      <div class="flex gap-3"><div class="anton text-5xl sk-grad-text">06</div><div class="flex-1"><div class="gc gc-ubereats aspect-[1.6/1] mb-2"><div class="brand">Uber Eats</div></div><div class="text-xs text-white/70">"3am Döner." · $15–$100</div></div></div>
+    </div>
+  </div>
+
+  <div class="px-10 py-8">
+    <div class="flex items-center justify-between mb-5">
+      <div class="flex gap-2 flex-wrap">
+        <span class="cat-chip active">All 200</span><span class="cat-chip">Gaming 42</span><span class="cat-chip">Streaming 18</span><span class="cat-chip">Shopping 64</span><span class="cat-chip">Food 31</span>
+      </div>
+      <div class="flex gap-2">
+        <input placeholder="⌕ Search" class="bg-white/5 border border-white/10 rounded px-3 py-1.5 text-xs w-44"/>
+        <button class="badge px-3 py-1.5 rounded text-xs">Sort: Most loved ▾</button>
+      </div>
+    </div>
+    <div class="grid grid-cols-6 gap-3">
+      <div class="gc gc-amazon"><div class="brand">amazon</div><div class="arrow"></div><div class="amt">$5–$500</div></div>
+      <div class="gc gc-apple"><div class="brand">Apple</div><div class="amt">App Store</div></div>
+      <div class="gc gc-ps"><div class="brand">PlayStation</div><div class="amt">$10–$100</div></div>
+      <div class="gc gc-xbox"><div class="brand">Xbox</div><div class="amt">$15–$100</div></div>
+      <div class="gc gc-nike"><div class="brand">NIKE</div><div class="amt">$25–$500</div></div>
+      <div class="gc gc-starbucks"><div class="brand">Starbucks</div><div class="amt">$10–$100</div></div>
+      <div class="gc gc-doordash"><div class="brand">DOORDASH</div><div class="amt">$25–$100</div></div>
+      <div class="gc gc-airbnb"><div class="brand">airbnb</div><div class="amt">$100–$500</div></div>
+      <div class="gc gc-google"><div class="brand">Google Play</div><div class="amt">$10–$100</div></div>
+      <div class="gc gc-twitch"><div class="brand">Twitch Bits</div><div class="amt">100–10k</div></div>
+      <div class="gc gc-netflix"><div class="brand">NETFLIX</div><div class="amt">$25 · $50</div></div>
+      <div class="gc gc-ubereats"><div class="brand">Uber Eats</div><div class="amt">$15–$100</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- 06 · CTA-dominant — actions foregrounded        -->
+<!-- ============================================ -->
+<section id="v6" class="variant">
+  <div class="px-6 py-4 border-b border-white/10 flex items-center justify-between bg-black/40">
+    <span class="label-pill">06 · CTA-dominant</span>
+    <span class="text-xs text-white/50">large Follow/Sub/Tip/Share buttons · ext-links as compact icon strip · denom rail · 6-col</span>
+  </div>
+  <div class="relative h-[440px] overflow-hidden grain cin-bg">
+    <div class="absolute -bottom-20 -right-20 w-[480px] h-[480px] rounded-full opacity-30 blur-3xl orb" style="background:#ff7a00"></div>
+    <div class="absolute inset-0 px-12 py-12 grid grid-cols-12 gap-8 items-center">
+      <div class="col-span-7">
+        <div class="flex items-center gap-5 mb-4">
+          <div class="av w-24 h-24 ring-4 ring-orange-500/60"></div>
+          <div>
+            <div class="text-xs uppercase tracking-[0.3em] text-orange-300">SK Gaming · Content</div>
+            <h1 class="text-6xl font-black grot leading-none">Sevkaan</h1>
+            <!-- icon strip ext-links right under name -->
+            <div class="mt-2 flex gap-1.5">
+              <a class="ext-link ext-twitch !p-1.5 !rounded-md" title="Twitch">🟣</a>
+              <a class="ext-link ext-yt !p-1.5 !rounded-md" title="YouTube">▶</a>
+              <a class="ext-link ext-tw !p-1.5 !rounded-md" title="Twitter">𝕏</a>
+              <a class="ext-link ext-ig !p-1.5 !rounded-md" title="Instagram">📷</a>
+              <a class="ext-link ext-tk !p-1.5 !rounded-md" title="TikTok">♪</a>
+              <a class="ext-link ext-dc !p-1.5 !rounded-md" title="Discord">💬</a>
+            </div>
+          </div>
+        </div>
+        <p class="text-white/80 max-w-lg text-lg">Support the stream by buying gift cards you'd buy anyway. Tip, sub, or shop — they all help.</p>
+        <div class="mt-5 flex gap-3 text-xs text-white/60">
+          <span>● 547 live</span><span>● 2,847 supporters</span><span>● Trustpilot 4.9</span>
+        </div>
+      </div>
+      <!-- CTA stack -->
+      <div class="col-span-5 space-y-3">
+        <button class="w-full sk-grad text-black font-black text-lg py-4 rounded-xl shadow-xl">+ Follow on Twitch</button>
+        <button class="w-full bg-purple-600 text-white font-bold py-3 rounded-xl">✦ Subscribe · €4.99/mo</button>
+        <div class="grid grid-cols-2 gap-2">
+          <button class="badge py-3 rounded-xl font-semibold">💰 Tip Sev</button>
+          <button class="badge py-3 rounded-xl font-semibold">⤴ Share store</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="px-10 py-8 border-b border-white/10">
+    <h2 class="text-xl font-bold mb-4">Sev's picks · pick a denom + buy</h2>
+    <div class="grid grid-cols-3 gap-5">
+      <div>
+        <div class="gc gc-steam aspect-[1.4/1]"><span class="chip">#1</span><div class="brand space text-2xl">STEAM</div><div class="dot"></div></div>
+        <div class="mt-3 cell rounded-full p-1 flex">
+          <button class="flex-1 text-xs py-1.5 rounded-full">$25</button>
+          <button class="flex-1 text-xs py-1.5 rounded-full sk-grad text-black font-bold">$50</button>
+          <button class="flex-1 text-xs py-1.5 rounded-full">$100</button>
+        </div>
+        <button class="w-full mt-2 sk-grad text-black font-bold text-sm py-2 rounded-lg">Buy $50</button>
+      </div>
+      <div>
+        <div class="gc gc-riot aspect-[1.4/1]"><span class="chip">#2</span><div class="brand space text-2xl">RIOT</div></div>
+        <div class="mt-3 cell rounded-full p-1 flex">
+          <button class="flex-1 text-xs py-1.5 rounded-full">$10</button>
+          <button class="flex-1 text-xs py-1.5 rounded-full sk-grad text-black font-bold">$25</button>
+          <button class="flex-1 text-xs py-1.5 rounded-full">$50</button>
+        </div>
+        <button class="w-full mt-2 sk-grad text-black font-bold text-sm py-2 rounded-lg">Buy $25</button>
+      </div>
+      <div>
+        <div class="gc gc-spotify aspect-[1.4/1]"><span class="chip" style="background:rgba(0,0,0,.5);color:#fff">#3</span><div class="brand text-2xl">Spotify</div></div>
+        <div class="mt-3 cell rounded-full p-1 flex">
+          <button class="flex-1 text-xs py-1.5 rounded-full">3mo</button>
+          <button class="flex-1 text-xs py-1.5 rounded-full sk-grad text-black font-bold">6mo</button>
+          <button class="flex-1 text-xs py-1.5 rounded-full">12mo</button>
+        </div>
+        <button class="w-full mt-2 sk-grad text-black font-bold text-sm py-2 rounded-lg">Buy 6mo</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="px-10 py-8">
+    <div class="flex gap-2 flex-wrap mb-5">
+      <span class="cat-chip active">All 200</span><span class="cat-chip">Gaming 42</span><span class="cat-chip">Streaming 18</span><span class="cat-chip">Shopping 64</span><span class="cat-chip">Food 31</span>
+    </div>
+    <div class="grid grid-cols-6 gap-3">
+      <div class="gc gc-amazon"><div class="brand">amazon</div><div class="arrow"></div><div class="amt">$5–$500</div></div>
+      <div class="gc gc-apple"><div class="brand">Apple</div><div class="amt">App Store</div></div>
+      <div class="gc gc-ps"><div class="brand">PlayStation</div><div class="amt">$10–$100</div></div>
+      <div class="gc gc-xbox"><div class="brand">Xbox</div><div class="amt">$15–$100</div></div>
+      <div class="gc gc-nike"><div class="brand">NIKE</div><div class="amt">$25–$500</div></div>
+      <div class="gc gc-starbucks"><div class="brand">Starbucks</div><div class="amt">$10–$100</div></div>
+      <div class="gc gc-doordash"><div class="brand">DOORDASH</div><div class="amt">$25–$100</div></div>
+      <div class="gc gc-airbnb"><div class="brand">airbnb</div><div class="amt">$100–$500</div></div>
+      <div class="gc gc-google"><div class="brand">Google Play</div><div class="amt">$10–$100</div></div>
+      <div class="gc gc-twitch"><div class="brand">Twitch Bits</div><div class="amt">100–10k</div></div>
+      <div class="gc gc-netflix"><div class="brand">NETFLIX</div><div class="amt">$25 · $50</div></div>
+      <div class="gc gc-ubereats"><div class="brand">Uber Eats</div><div class="amt">$15–$100</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- 07 · Widescreen slim — short cinemascope banner -->
+<!-- ============================================ -->
+<section id="v7" class="variant">
+  <div class="px-6 py-4 border-b border-white/10 flex items-center justify-between bg-black/40">
+    <span class="label-pill">07 · Widescreen slim</span>
+    <span class="text-xs text-white/50">cinemascope h=240 · single-line meta · ext-link slim row · dense compact rail · 7-col grid</span>
+  </div>
+  <div class="relative h-[240px] overflow-hidden grain cin-bg">
+    <div class="absolute -top-10 -right-10 w-[300px] h-[300px] rounded-full opacity-25 blur-3xl orb" style="background:#ff7a00"></div>
+    <div class="absolute inset-0 px-10 flex items-center gap-6">
+      <div class="av w-24 h-24 ring-4 ring-orange-500/60 shrink-0"></div>
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center gap-3 text-xs text-white/60 mb-1">
+          <span class="text-orange-300 uppercase tracking-widest">Storefront</span>
+          <span>·</span><span>SK Gaming</span><span>·</span><span>🇩🇪</span><span>·</span><span class="flex items-center gap-1"><span class="w-1.5 h-1.5 bg-red-500 rounded-full live-dot"></span>547 live</span><span>·</span><span>2,847 supporters</span>
+        </div>
+        <h1 class="text-5xl font-black grot leading-none">SEVKAAN</h1>
+        <p class="text-white/70 mt-2 text-sm">Content Creator · 200 gift cards · same prices · supports the stream.</p>
+      </div>
+      <div class="flex gap-1.5 flex-col items-end">
+        <button class="sk-grad text-black font-bold px-4 py-2 rounded-lg text-sm whitespace-nowrap">+ Follow</button>
+        <button class="badge px-4 py-2 rounded-lg text-xs whitespace-nowrap">⤴ Share</button>
+      </div>
+    </div>
+  </div>
+  <!-- slim ext-link row below banner -->
+  <div class="px-10 py-3 border-y border-white/10 bg-black/40 flex items-center gap-2 overflow-x-auto">
+    <span class="text-[10px] uppercase tracking-widest text-white/40 mr-2 shrink-0">Find Sev:</span>
+    <a class="ext-link ext-twitch text-[11px] shrink-0" href="#">🟣 twitch · 42.1K</a>
+    <a class="ext-link ext-yt text-[11px] shrink-0" href="#">▶ youtube · 18.4K</a>
+    <a class="ext-link ext-tw text-[11px] shrink-0" href="#">𝕏 twitter · 9.2K</a>
+    <a class="ext-link ext-ig text-[11px] shrink-0" href="#">📷 instagram · 11.7K</a>
+    <a class="ext-link ext-tk text-[11px] shrink-0" href="#">♪ tiktok · 31.5K</a>
+    <a class="ext-link ext-dc text-[11px] shrink-0" href="#">💬 discord · 3.8K</a>
+  </div>
+
+  <div class="px-10 py-7 border-b border-white/10">
+    <div class="flex items-center justify-between mb-4">
+      <h2 class="text-base font-bold">Sev picks · 6</h2>
+      <a class="text-xs text-white/50">See all →</a>
+    </div>
+    <div class="flex gap-3 overflow-x-auto pb-2">
+      <div class="gc gc-steam shrink-0 w-44 aspect-[1.4/1]"><span class="chip">#1</span><div class="brand space text-sm">STEAM</div><div class="dot"></div></div>
+      <div class="gc gc-riot shrink-0 w-44 aspect-[1.4/1]"><span class="chip">#2</span><div class="brand space text-sm">RIOT</div></div>
+      <div class="gc gc-spotify shrink-0 w-44 aspect-[1.4/1]"><span class="chip" style="background:rgba(0,0,0,.5);color:#fff">#3</span><div class="brand text-sm">Spotify</div></div>
+      <div class="gc gc-roblox shrink-0 w-44 aspect-[1.4/1]"><span class="chip">#4</span><div class="brand space text-sm">ROBLOX</div></div>
+      <div class="gc gc-netflix shrink-0 w-44 aspect-[1.4/1]"><span class="chip">#5</span><div class="brand text-sm">NETFLIX</div></div>
+      <div class="gc gc-ubereats shrink-0 w-44 aspect-[1.4/1]"><span class="chip">#6</span><div class="brand text-sm">Uber Eats</div></div>
+    </div>
+  </div>
+
+  <div class="px-10 py-7">
+    <div class="flex gap-2 flex-wrap mb-5">
+      <span class="cat-chip active">All 200</span><span class="cat-chip">Gaming 42</span><span class="cat-chip">Streaming 18</span><span class="cat-chip">Shopping 64</span><span class="cat-chip">Food 31</span><span class="cat-chip">Travel 22</span><span class="cat-chip">Crypto 11</span>
+    </div>
+    <div class="grid grid-cols-7 gap-2">
+      <div class="gc gc-amazon"><div class="brand text-sm">amazon</div><div class="arrow"></div><div class="amt text-[10px]">$5–$500</div></div>
+      <div class="gc gc-apple"><div class="brand text-sm">Apple</div><div class="amt text-[10px]">App Store</div></div>
+      <div class="gc gc-ps"><div class="brand text-sm">PSN</div><div class="amt text-[10px]">$10–$100</div></div>
+      <div class="gc gc-xbox"><div class="brand text-sm">Xbox</div><div class="amt text-[10px]">$15–$100</div></div>
+      <div class="gc gc-nike"><div class="brand text-sm">NIKE</div><div class="amt text-[10px]">$25+</div></div>
+      <div class="gc gc-starbucks"><div class="brand text-sm">Starbucks</div><div class="amt text-[10px]">$10–$100</div></div>
+      <div class="gc gc-doordash"><div class="brand text-sm">DOORDASH</div><div class="amt text-[10px]">$25–$100</div></div>
+      <div class="gc gc-airbnb"><div class="brand text-sm">airbnb</div><div class="amt text-[10px]">$100+</div></div>
+      <div class="gc gc-google"><div class="brand text-sm">G Play</div><div class="amt text-[10px]">$10–$100</div></div>
+      <div class="gc gc-twitch"><div class="brand text-sm">Bits</div><div class="amt text-[10px]">100–10k</div></div>
+      <div class="gc gc-netflix"><div class="brand text-sm">NETFLIX</div><div class="amt text-[10px]">$25 · $50</div></div>
+      <div class="gc gc-ubereats"><div class="brand text-sm">Uber Eats</div><div class="amt text-[10px]">$15–$100</div></div>
+      <div class="gc gc-spotify"><div class="brand text-sm">DAZN</div><div class="amt text-[10px]">Monthly</div></div>
+      <div class="gc gc-amazon"><div class="brand text-sm">Audible</div><div class="amt text-[10px]">3/12 mo</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- 08 · Drop-strip — "this week" drops between banner and rail -->
+<!-- ============================================ -->
+<section id="v8" class="variant">
+  <div class="px-6 py-4 border-b border-white/10 flex items-center justify-between bg-black/40">
+    <span class="label-pill">08 · Drop-strip</span>
+    <span class="text-xs text-white/50">banner + "this week" drops strip · ext-links inline · drop-tagged rail · 6-col w/ "new" badges</span>
+  </div>
+  <div class="relative h-[400px] overflow-hidden grain cin-bg">
+    <div class="absolute -bottom-20 -right-20 w-[480px] h-[480px] rounded-full opacity-30 blur-3xl orb" style="background:#ff7a00"></div>
+    <div class="absolute inset-0 px-12 py-10 flex items-center">
+      <div class="av w-40 h-40 ring-8 ring-orange-500/40"></div>
+      <div class="ml-10 flex-1">
+        <div class="flex items-center gap-2 text-xs mb-3">
+          <span class="text-orange-300 uppercase tracking-[0.3em]">Storefront</span>
+          <span class="px-2 py-0.5 rounded sk-grad text-black font-bold text-[10px]">DROPS WEEKLY</span>
+        </div>
+        <h1 class="text-6xl font-black grot leading-none">SEVKAAN</h1>
+        <p class="text-white/80 max-w-lg mt-3 text-lg">200 brands. New drops every Friday. Sev's six picks updated as chat demands.</p>
+        <!-- ext-links inline -->
+        <div class="mt-5 flex gap-2 flex-wrap items-center">
+          <span class="text-xs text-white/40 uppercase tracking-widest">Follow:</span>
+          <a class="ext-link ext-twitch" href="#">🟣</a>
+          <a class="ext-link ext-yt" href="#">▶</a>
+          <a class="ext-link ext-tw" href="#">𝕏</a>
+          <a class="ext-link ext-ig" href="#">📷</a>
+          <a class="ext-link ext-tk" href="#">♪</a>
+          <a class="ext-link ext-dc" href="#">💬</a>
+          <span class="text-xs text-white/40 ml-2">42K · 18K · 9K · 12K · 31K · 4K</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DROP STRIP between banner and rail -->
+  <div class="px-10 py-5 border-y border-orange-500/30" style="background: linear-gradient(90deg, rgba(255,122,0,.12), transparent 60%);">
+    <div class="flex items-center gap-6 overflow-x-auto">
+      <div class="shrink-0 flex items-center gap-2 text-xs"><span class="px-2 py-1 sk-grad text-black font-black rounded">THIS WEEK</span><span class="text-orange-300">3 drops live</span></div>
+      <div class="shrink-0 cell px-4 py-2 rounded-lg flex items-center gap-3 text-sm">
+        <span class="px-1.5 py-0.5 bg-red-500 text-white text-[10px] font-bold rounded">NEW</span>
+        <span class="font-semibold">Crunchyroll added</span>
+        <span class="text-white/50 text-xs">2 days left</span>
+      </div>
+      <div class="shrink-0 cell px-4 py-2 rounded-lg flex items-center gap-3 text-sm">
+        <span class="px-1.5 py-0.5 sk-grad text-black text-[10px] font-bold rounded">DEAL</span>
+        <span class="font-semibold">DoorDash €5 OFF</span>
+        <span class="text-white/50 text-xs">24h drop</span>
+      </div>
+      <div class="shrink-0 cell px-4 py-2 rounded-lg flex items-center gap-3 text-sm">
+        <span class="px-1.5 py-0.5 bg-purple-500 text-white text-[10px] font-bold rounded">EVENT</span>
+        <span class="font-semibold">Charity stream May 28</span>
+        <span class="text-white/50 text-xs">100% Robin Hood</span>
+      </div>
+      <a class="shrink-0 text-xs text-orange-300 hover:underline ml-auto">See schedule →</a>
+    </div>
+  </div>
+
+  <div class="px-10 py-8 border-b border-white/10">
+    <h2 class="text-xl font-bold mb-4">Sev's picks <span class="text-orange-300 text-sm font-normal">· new this week tagged</span></h2>
+    <div class="flex gap-4 overflow-x-auto pb-2">
+      <div class="gc gc-steam shrink-0 w-64"><span class="chip">#1</span><div class="brand space">STEAM</div><div class="dot"></div><div class="amt">"Chat's home."</div></div>
+      <div class="gc gc-riot shrink-0 w-64"><span class="chip">#2</span><div class="brand space">RIOT</div><div class="amt">VP · $10–$100</div></div>
+      <div class="gc shrink-0 w-64" style="background: linear-gradient(135deg,#ff6f1c,#5a1a06);"><span class="chip" style="background:#000;color:#ff7a00;">🆕 NEW</span><div class="brand space">CRUNCHY</div><div class="amt">Anime monthly</div></div>
+      <div class="gc gc-spotify shrink-0 w-64"><span class="chip" style="background:rgba(0,0,0,.5);color:#fff">#3</span><div class="brand">Spotify</div><div class="amt">3/6/12 mo</div></div>
+      <div class="gc gc-roblox shrink-0 w-64"><span class="chip">#4</span><div class="brand space">ROBLOX</div><div class="amt">$10–$100</div></div>
+      <div class="gc gc-doordash shrink-0 w-64"><span class="chip" style="background:#000;color:#ff7a00;">💥 -€5</span><div class="brand">DOORDASH</div><div class="amt">$25–$100</div></div>
+    </div>
+  </div>
+
+  <div class="px-10 py-8">
+    <div class="flex items-center justify-between mb-5">
+      <div class="flex gap-2 flex-wrap">
+        <span class="cat-chip active">All 200</span><span class="cat-chip">★ Sev's picks</span><span class="cat-chip">🆕 New this week</span><span class="cat-chip">💥 On sale</span><span class="cat-chip">Gaming 42</span><span class="cat-chip">Streaming 18</span>
+      </div>
+      <button class="badge px-3 py-1.5 rounded text-xs">Sort: Newest ▾</button>
+    </div>
+    <div class="grid grid-cols-6 gap-3">
+      <div class="gc gc-amazon relative"><span class="absolute -top-1 -right-1 px-1.5 py-0.5 bg-red-500 text-white text-[9px] font-bold rounded z-10">NEW</span><div class="brand">amazon</div><div class="arrow"></div><div class="amt">$5–$500</div></div>
+      <div class="gc gc-apple"><div class="brand">Apple</div><div class="amt">App Store</div></div>
+      <div class="gc gc-ps"><div class="brand">PlayStation</div><div class="amt">$10–$100</div></div>
+      <div class="gc gc-xbox"><div class="brand">Xbox</div><div class="amt">$15–$100</div></div>
+      <div class="gc gc-nike"><div class="brand">NIKE</div><div class="amt">$25–$500</div></div>
+      <div class="gc gc-starbucks relative"><span class="absolute -top-1 -right-1 px-1.5 py-0.5 sk-grad text-black text-[9px] font-bold rounded z-10">DEAL</span><div class="brand">Starbucks</div><div class="amt">$10–$100</div></div>
+      <div class="gc gc-doordash"><div class="brand">DOORDASH</div><div class="amt">$25–$100</div></div>
+      <div class="gc gc-airbnb"><div class="brand">airbnb</div><div class="amt">$100–$500</div></div>
+      <div class="gc gc-google"><div class="brand">Google Play</div><div class="amt">$10–$100</div></div>
+      <div class="gc gc-twitch"><div class="brand">Twitch Bits</div><div class="amt">100–10k</div></div>
+      <div class="gc gc-netflix"><div class="brand">NETFLIX</div><div class="amt">$25 · $50</div></div>
+      <div class="gc gc-ubereats"><div class="brand">Uber Eats</div><div class="amt">$15–$100</div></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="text-center text-xs text-white/40 py-10 border-t border-white/10 mt-10">
+  Round 4 · 8 deep on Cinematic orange · Pick a variant (e.g. "branch on 04") or say "freeze it".
+</footer>
+
+</body>
+</html>
