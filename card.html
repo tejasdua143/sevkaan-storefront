@@ -59,14 +59,14 @@
     display:flex; flex-direction:column; align-items:center; justify-content:center;
     border: 1.5px solid rgba(255,255,255,.14);
     background: rgba(255,255,255,.04);
-    padding: 14px 8px;
-    border-radius: 10px;
+    padding: 9px 6px;
+    border-radius: 9px;
     cursor: pointer;
     transition: all .15s;
   }
   .denom:hover { background: rgba(255,255,255,.08); }
-  .denom .face { font-weight: 800; font-size: 20px; letter-spacing: -0.02em; }
-  .denom .pay { font-size: 11px; color: rgba(255,255,255,.55); margin-top: 2px; font-weight: 600; font-family: 'JetBrains Mono', monospace; }
+  .denom .face { font-weight: 800; font-size: 15px; letter-spacing: -0.02em; }
+  .denom .pay { font-size: 10px; color: rgba(255,255,255,.55); margin-top: 1px; font-weight: 600; font-family: 'JetBrains Mono', monospace; }
   .denom.selected .pay { color: #fff; }
   .denom.selected {
     border-color: #fff;
@@ -453,18 +453,18 @@
 <script>
   // ---- country / currency data (static, USD base) ----
   const COUNTRIES = [
-    {c:'US',n:'United States', cur:'USD', sym:'$',   rate:1,    dp:2},
-    {c:'GB',n:'United Kingdom',cur:'GBP', sym:'£',   rate:0.79, dp:2},
-    {c:'DE',n:'Germany',       cur:'EUR', sym:'€',   rate:0.92, dp:2},
-    {c:'FR',n:'France',        cur:'EUR', sym:'€',   rate:0.92, dp:2},
-    {c:'IN',n:'India',         cur:'INR', sym:'₹',   rate:83.2, dp:0},
-    {c:'CA',n:'Canada',        cur:'CAD', sym:'C$',  rate:1.36, dp:2},
-    {c:'AU',n:'Australia',     cur:'AUD', sym:'A$',  rate:1.51, dp:2},
-    {c:'JP',n:'Japan',         cur:'JPY', sym:'¥',   rate:156,  dp:0},
-    {c:'BR',n:'Brazil',        cur:'BRL', sym:'R$',  rate:5.05, dp:2},
-    {c:'AE',n:'UAE',           cur:'AED', sym:'AED ',rate:3.67, dp:2},
-    {c:'SG',n:'Singapore',     cur:'SGD', sym:'S$',  rate:1.35, dp:2},
-    {c:'TR',n:'Türkiye',       cur:'TRY', sym:'₺',   rate:32.5, dp:2},
+    {c:'US',f:'🇺🇸',n:'United States', cur:'USD', sym:'$',   rate:1,    dp:2},
+    {c:'GB',f:'🇬🇧',n:'United Kingdom',cur:'GBP', sym:'£',   rate:0.79, dp:2},
+    {c:'DE',f:'🇩🇪',n:'Germany',       cur:'EUR', sym:'€',   rate:0.92, dp:2},
+    {c:'FR',f:'🇫🇷',n:'France',        cur:'EUR', sym:'€',   rate:0.92, dp:2},
+    {c:'IN',f:'🇮🇳',n:'India',         cur:'INR', sym:'₹',   rate:83.2, dp:0},
+    {c:'CA',f:'🇨🇦',n:'Canada',        cur:'CAD', sym:'C$',  rate:1.36, dp:2},
+    {c:'AU',f:'🇦🇺',n:'Australia',     cur:'AUD', sym:'A$',  rate:1.51, dp:2},
+    {c:'JP',f:'🇯🇵',n:'Japan',         cur:'JPY', sym:'¥',   rate:156,  dp:0},
+    {c:'BR',f:'🇧🇷',n:'Brazil',        cur:'BRL', sym:'R$',  rate:5.05, dp:2},
+    {c:'AE',f:'🇦🇪',n:'UAE',           cur:'AED', sym:'AED ',rate:3.67, dp:2},
+    {c:'SG',f:'🇸🇬',n:'Singapore',     cur:'SGD', sym:'S$',  rate:1.35, dp:2},
+    {c:'TR',f:'🇹🇷',n:'Türkiye',       cur:'TRY', sym:'₺',   rate:32.5, dp:2},
   ];
   const VALID_REGIONS = ['US'];               // Steam Wallet card is US region-locked
   const byC = c => COUNTRIES.find(x => x.c === c) || COUNTRIES[0];
@@ -487,11 +487,11 @@
   const countrySel = document.getElementById('country');
   COUNTRIES.forEach(o => {
     const opt = document.createElement('option');
-    opt.value = o.c; opt.textContent = `${o.n} · ${o.cur}`;
+    opt.value = o.c; opt.textContent = `${o.f}  ${o.n} · ${o.cur}`;
     countrySel.appendChild(opt);
   });
   countrySel.value = state.country;
-  document.getElementById('detectedLoc').textContent = byC(detected).n;
+  document.getElementById('detectedLoc').textContent = byC(detected).f + ' ' + byC(detected).n;
 
   const fmt = (usd, co) => {
     const v = usd * co.rate;
