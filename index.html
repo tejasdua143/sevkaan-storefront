@@ -130,9 +130,20 @@
   .ico-tk     { color:#25f4ee; }
   .ico-dc     { color:#5865f2; }
 
-  /* rank badge — bestseller variant of .disc, pinned top-left */
-  .gc .disc.rank { left:10px; right:auto; background:rgba(0,0,0,.82); }
-  .gc .disc.rank.big { left:12px; right:auto; }
+  /* bestseller card — visually distinct from Sevkaan picks (gold accent + ghost rank) */
+  .gc.best { border:1px solid rgba(255,210,63,.5);
+    box-shadow:0 12px 26px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,210,63,.14); }
+  .gc.best:hover { box-shadow:0 18px 36px rgba(0,0,0,.55), inset 0 0 0 1px rgba(255,210,63,.22); }
+  .gc.best::after { content:"\2605 BESTSELLER"; position:absolute; top:10px; left:10px;
+    font-size:9px; font-weight:800; letter-spacing:.1em; color:#1a1030;
+    background:#ffd23f; padding:3px 7px; border-radius:5px; z-index:3; }
+  .gc .rank-num { position:absolute; right:12px; bottom:6px; z-index:1; pointer-events:none;
+    font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:58px;
+    line-height:1; color:rgba(255,210,63,.18); }
+
+  /* hide horizontal rail scrollbars */
+  #rail-best, #rail-picks { scrollbar-width:none; -ms-overflow-style:none; }
+  #rail-best::-webkit-scrollbar, #rail-picks::-webkit-scrollbar { display:none; }
 
   /* by-budget tiles */
   .budget-tile {
@@ -196,6 +207,13 @@
     border-radius:10px 0 0 10px; cursor:pointer; box-shadow:-6px 0 18px rgba(0,0,0,.45); }
   .deals-tab:hover { color:#fff; }
   [hidden] { display:none !important; }
+
+  /* mobile: narrow the floating overlay so it doesn't swallow the screen */
+  @media (max-width:640px) {
+    .deals-overlay { width:170px; right:12px; padding:16px 14px; }
+    .deals-overlay .ttl { font-size:15px; }
+    .deals-overlay .cd b { font-size:15px; }
+  }
 </style>
 </head>
 <body>
@@ -263,33 +281,33 @@
       </div>
     </div>
     <div id="rail-best" class="flex gap-5 overflow-x-auto pb-2 scroll-smooth">
-      <div class="gc gc-steam shrink-0 w-64">
-        <span class="disc rank big">#1</span>
+      <div class="gc gc-steam best shrink-0 w-64">
+        <span class="rank-num">1</span>
         <div class="logo-wrap"><img class="logo lg" src="https://cdn.simpleicons.org/steam/c7d5e0" alt="Steam"/></div>
         <div class="bottom"><div><div class="brand">Steam</div><div class="denoms">$10 · $25 · $50 · $100</div></div></div>
       </div>
-      <div class="gc gc-riot shrink-0 w-64">
-        <span class="disc rank big">#2</span>
+      <div class="gc gc-riot best shrink-0 w-64">
+        <span class="rank-num">2</span>
         <div class="logo-wrap"><img class="logo lg" src="https://cdn.simpleicons.org/riotgames/ffffff" alt="Riot Games"/></div>
         <div class="bottom"><div><div class="brand">Riot Games</div><div class="denoms">$10 · $25 · $50 · $100</div></div></div>
       </div>
-      <div class="gc gc-ps shrink-0 w-64">
-        <span class="disc rank big">#3</span>
+      <div class="gc gc-ps best shrink-0 w-64">
+        <span class="rank-num">3</span>
         <div class="logo-wrap"><img class="logo lg" src="https://cdn.simpleicons.org/playstation/ffffff" alt="PlayStation"/></div>
         <div class="bottom"><div><div class="brand">PlayStation</div><div class="denoms">$10 · $25 · $50 · $100</div></div></div>
       </div>
-      <div class="gc gc-xbox shrink-0 w-64">
-        <span class="disc rank big">#4</span>
+      <div class="gc gc-xbox best shrink-0 w-64">
+        <span class="rank-num">4</span>
         <div class="logo-wrap"><img class="logo lg" src="https://api.iconify.design/mdi/microsoft-xbox.svg?color=%23ffffff" alt="Xbox"/></div>
         <div class="bottom"><div><div class="brand">Xbox</div><div class="denoms">$15 · $25 · $50 · $100</div></div></div>
       </div>
-      <div class="gc gc-roblox shrink-0 w-64">
-        <span class="disc rank big">#5</span>
+      <div class="gc gc-roblox best shrink-0 w-64">
+        <span class="rank-num">5</span>
         <div class="logo-wrap"><img class="logo lg" src="https://cdn.simpleicons.org/roblox/ffffff" alt="Roblox"/></div>
         <div class="bottom"><div><div class="brand">Roblox</div><div class="denoms">$10 · $25 · $50 · $100</div></div></div>
       </div>
-      <div class="gc gc-fortnite shrink-0 w-64">
-        <span class="disc rank big">#6</span>
+      <div class="gc gc-fortnite best shrink-0 w-64">
+        <span class="rank-num">6</span>
         <div class="logo-wrap"><img class="logo lg" src="https://cdn.simpleicons.org/fortnite/ffffff" alt="Fortnite"/></div>
         <div class="bottom"><div><div class="brand">Fortnite V‑Bucks</div><div class="denoms">1k · 2.8k · 5k · 13.5k</div></div></div>
       </div>
@@ -405,9 +423,12 @@
       <div class="absolute -top-20 -right-16 w-[380px] h-[380px] rounded-full opacity-20 blur-3xl orb" style="background:#fff"></div>
       <div class="relative flex flex-col lg:flex-row lg:items-center gap-8 justify-between">
         <div class="min-w-0">
-          <div class="text-[11px] uppercase tracking-[0.3em] text-black/60 mb-3 font-bold">Limited bundle</div>
-          <h2 class="text-4xl md:text-5xl font-black grot text-black leading-[0.95]">Triple Threat</h2>
-          <p class="text-black/75 font-semibold mt-3 text-base">Three top-ups, one price. Stack the value.</p>
+          <div class="flex items-center gap-2 mb-3">
+            <div class="av w-7 h-7 ring-2 ring-black/30 shrink-0"></div>
+            <div class="text-[11px] uppercase tracking-[0.3em] text-black/65 font-bold">Sevkaan's bundle · hand-picked</div>
+          </div>
+          <h2 class="text-4xl md:text-5xl font-black grot text-black leading-[0.95]">Sev's Triple Threat</h2>
+          <p class="text-black/75 font-semibold mt-3 text-base">Sev's go-to loadout — three top-ups, one price. Stack the value.</p>
           <div class="flex flex-wrap items-center gap-3 mt-6">
             <span class="bundle-chip"><img src="https://cdn.simpleicons.org/steam/c7d5e0" alt="Steam"/> Steam $10</span>
             <span class="bundle-plus text-black">+</span>
@@ -564,6 +585,11 @@
   // wire bento clip tiles too (optional — could route to clip detail)
   document.querySelectorAll('.bento-tile').forEach(el => {
     if (el.tagName !== 'A') return;
+    el.addEventListener('click', e => e.preventDefault());
+  });
+
+  // budget tiles are landing stubs — no real target yet, don't jump
+  document.querySelectorAll('.budget-tile').forEach(el => {
     el.addEventListener('click', e => e.preventDefault());
   });
 
