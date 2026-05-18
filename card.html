@@ -598,14 +598,15 @@
       return;
     }
     const o = getOrders();
+    const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
     list.innerHTML = o.map(x => `
       <div class="order-row">
         <div class="flex items-center justify-between">
-          <div class="font-bold">${x.brand} · ${x.sym}${x.face}</div>
-          <span class="text-[11px] px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-400/30">${x.status}</span>
+          <div class="font-bold">${esc(x.brand)} · ${esc(x.sym)}${esc(x.face)}</div>
+          <span class="text-[11px] px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-400/30">${esc(x.status)}</span>
         </div>
-        <div class="text-xs text-white/50 mt-1">${x.date} · Paid ${x.sym}${x.pay} ${x.cur}</div>
-        <div class="mono text-xs text-white/70 mt-2 bg-white/5 rounded px-2 py-1.5 inline-block">${x.code}</div>
+        <div class="text-xs text-white/50 mt-1">${esc(x.date)} · Paid ${esc(x.sym)}${esc(x.pay)} ${esc(x.cur)}</div>
+        <div class="mono text-xs text-white/70 mt-2 bg-white/5 rounded px-2 py-1.5 inline-block">${esc(x.code)}</div>
       </div>`).join('');
   }
   const ordersScrim  = document.getElementById('ordersScrim');
